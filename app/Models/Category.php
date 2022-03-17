@@ -16,12 +16,19 @@ class Category extends Model
     // This would prevent the user from "hacking your form".
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'parent_id'
     ];
 
     // The Category belongs to the many Posts.
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    // The Subcategories belong to the many Categories.
+    public function subCategories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'parent_id')->with('categories');
     }
 }

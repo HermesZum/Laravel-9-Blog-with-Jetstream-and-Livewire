@@ -16,9 +16,17 @@ class Post extends Model
 
     // This would prevent the user from "hacking your form".
     protected $fillable = [
-        'id',
         'title',
-        'body'
+        'slug',
+        'body',
+        'meta_desc',
+        'cover_image',
+        'meta_image_desc',
+        'published_at',
+        'archived_at',
+        'featured',
+        'author_id',
+        'category_id'
     ];
 
     // The Post belongs to the User.
