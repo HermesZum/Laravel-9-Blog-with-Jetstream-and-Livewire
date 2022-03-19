@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ config('app.url') }}/@yield('og:image')">
+    <meta property="og:description" content="@yield('og:title')">
+
 
     <title>@yield('title', 'Article')</title>
 
@@ -16,20 +19,3 @@
     <!-- Get Livewire Styles -->
     @livewireStyles
 </head>
-<body>
-<div class="font-sans text-gray-900 antialiased">
-    {{ $slot }}
-</div>
-<footer>
-    © 2021 -
-    <script>document.write(new Date().getFullYear());</script>
-    Copyright:
-    <a class="text-gray-800" href="https://3gear.net/">{{ config('app.name') }}</a>
-</footer>
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-
-<!-- Get Livewire Scripts -->
-@livewireScripts
-</body>
-</html>
